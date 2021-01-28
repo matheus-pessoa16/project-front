@@ -15,8 +15,7 @@ const actions = {
     },
     logout({ commit }) {
         commit('logout');
-        window.location =
-            process.env.NODE_ENV === 'production' ? '/project-front/login' : '/login';
+        window.location = process.env.NODE_ENV === 'production' ? '/' : '/login';
     },
     createNewUser({ dispatch }, user) {
         projectApi.createNewUser(user).then(() => {
