@@ -16,7 +16,7 @@ const actions = {
     logout({ commit }) {
         commit('logout');
         window.location =
-            process.env.NODE_ENV === 'production' ? '/project-front/' : '/';
+            process.env.NODE_ENV === 'production' ? '/project-front/' : '/login';
     },
     createNewUser({ dispatch }, user) {
         projectApi.createNewUser(user).then(() => {
@@ -50,7 +50,7 @@ const actions = {
         projectApi.listSupportsByUser(user.id).then(async(response) => {
             for (let project of response.data) {
                 let result = await projectApi.getProjectById(project.id);
-                if (result.data) {
+                if (result.data !== undefined) {
                     let userResult = await projectApi.getUserById(result.data.user_id);
                     Vue.set(project, 'project', result.data);
                     Vue.set(project, 'user', userResult.data);

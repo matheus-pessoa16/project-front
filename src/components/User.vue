@@ -98,19 +98,21 @@ export default {
       if (this.isAdmin) {
         return this.projects;
       }
-      return this.user.projects;
+      return this.userProjects;
     },
   },
   data: () => ({
     cards: ['Today', 'Yesterday'],
     createProjectDialog: false,
     selectedProject: null,
+    userProjects: [],
   }),
   created() {
+    this.getUserById();
+
     if (this.isAdmin) {
       this.getAllProjects();
     }
-    this.getUserById();
   },
   methods: {
     ...mapMutations(['setUser']),
@@ -124,6 +126,7 @@ export default {
       projectApi.getUserById(this.user.id).then((res) => {
         this.setUser(res.data);
         this.getAllUserSupports(this.user);
+        this.userProjects = res.data.projects;
       });
     },
     closeAndUpdate() {
