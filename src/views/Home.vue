@@ -1,5 +1,5 @@
 <template>
-  <v-sheet class="home" width="100%">
+  <v-sheet class="home mt-4" width="100%">
     <v-alert
       v-if="message.text"
       :type="message.type"
@@ -10,7 +10,7 @@
       {{ message.text }}</v-alert
     >
     <v-container fluid class="mw-100">
-      <v-navigation-drawer v-model="drawer" app>
+      <v-navigation-drawer v-model="drawer" app class="mt-4">
         <v-sheet color="grey lighten-4" class="text-center pa-4">
           <v-avatar class="mb-4" color="grey darken-1" size="64"></v-avatar>
 
@@ -23,10 +23,8 @@
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
 
-            <v-list-item-content>
-              <v-list-item-title @click="handleAction(item)">{{
-                item.text
-              }}</v-list-item-title>
+            <v-list-item-content @click="handleAction(item)">
+              <v-list-item-title>{{ item.text }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>

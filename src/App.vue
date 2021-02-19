@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-system-bar app color="primary">
+    <v-system-bar app color="primary" class="py-4">
       <v-app-bar-title style="color: white">
         Project Management System
       </v-app-bar-title>
