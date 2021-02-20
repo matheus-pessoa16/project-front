@@ -207,11 +207,6 @@ export default {
   },
   methods: {
     ...mapActions(['getTokenAndSetUser', 'createNewUser']),
-    validate() {
-      if (this.$refs.loginForm.validate()) {
-        // submit form to server/API here...
-      }
-    },
     formatDate(date) {
       if (!date) return null;
       const [year, month, day] = date.split('/');
@@ -234,5 +229,3 @@ export default {
   },
 };
 </script>
-
-<style></style>
