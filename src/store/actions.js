@@ -48,12 +48,12 @@ const actions = {
     },
     getAllUserSupports({ commit }, user) {
         projectApi.listSupportsByUser(user.id).then(async(response) => {
-            for (let project of response.data) {
-                let result = await projectApi.getProjectById(project.id);
+            for (let support of response.data) {
+                let result = await projectApi.getProjectById(support.project_id);
                 if (result.data !== undefined) {
                     let userResult = await projectApi.getUserById(result.data.user_id);
-                    Vue.set(project, 'project', result.data);
-                    Vue.set(project, 'user', userResult.data);
+                    Vue.set(support, 'project', result.data);
+                    Vue.set(support, 'user', userResult.data);
                 }
             }
 
